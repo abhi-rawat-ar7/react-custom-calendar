@@ -1,0 +1,256 @@
+/* src/components/WeeklyCalendar.css */
+
+.weekly-calendar,
+.daily-calendar {
+  max-width: 1200px;
+  margin: 30px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* For border radius */
+}
+
+/* Header (similar to monthly, but specific class) */
+.weekly-header,
+.daily-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #eee;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.weekly-header .col-start,
+.weekly-header .col-end,
+.daily-header .col-start,
+.daily-header .col-end {
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  transition: color 0.2s ease;
+}
+
+.weekly-header .col-start:hover,
+.weekly-header .col-end:hover,
+.daily-header .col-start:hover,
+.daily-header .col-end:hover {
+  color: #007bff;
+}
+
+.weekly-header .icon,
+.daily-header .icon {
+  font-family: 'Material Icons';
+  font-size: 24px;
+}
+
+/* Day Headers (for weekly) */
+.weekly-days {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  background-color: #fcfcfc;
+}
+
+.weekly-days .day-header {
+  flex-grow: 1;
+  flex-basis: 0;
+  padding: 10px 0;
+  text-align: center;
+  font-weight: bold;
+  color: #777;
+}
+
+.weekly-days .day-header.current-day-header {
+  color: #007bff; /* Highlight current day */
+}
+
+/* Event Grid */
+.weekly-event-grid,
+.daily-event-grid {
+  display: flex;
+  min-height: 800px; /* Make sure there's enough vertical space */
+  overflow-x: auto; /* For very wide events/columns */
+  position: relative;
+}
+
+.time-column {
+  flex-shrink: 0; /* Don't shrink time column */
+  width: 60px; /* Fixed width for time labels */
+  border-right: 1px solid #eee;
+  background-color: #fcfcfc;
+}
+
+.time-slot-label {
+  height: 33px; /* Corresponds to 60 minutes / 24 hours = 2.5%, roughly */
+  line-height: 33px;
+  text-align: right;
+  padding-right: 5px;
+  font-size: 0.8em;
+  color: #888;
+  border-bottom: 1px dotted #eee; /* Light line every hour */
+  box-sizing: border-box; /* Include padding/border in height */
+}
+/* No bottom border for the last time slot label */
+.time-slot-label:last-child {
+  border-bottom: none;
+}
+
+
+.day-columns {
+  flex-grow: 1;
+  display: flex;
+}
+
+.day-column,
+.main-day-column { /* For daily view's main column */
+  flex-grow: 1;
+  flex-basis: 0;
+  border-right: 1px solid #eee;
+  position: relative; /* For absolutely positioned events */
+  cursor: pointer;
+}
+
+.day-column:last-child,
+.main-day-column:last-child {
+  border-right: none;
+}
+
+.time-slot {
+  height: 33px; /* Matches time-slot-label height for grid alignment */
+  border-bottom: 1px dotted #eee;
+}
+.time-slot:last-child {
+    border-bottom: none;
+}
+
+
+.day-events-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto; /* Allow scrolling if many events overlap */
+  padding: 2px; /* Small padding inside day column for events */
+  box-sizing: border-box;
+}
+
+/* Event Item positioning in Weekly/Daily */
+.weekly-event-grid .event-item,
+.daily-event-grid .event-item {
+  position: absolute; /* Handled by inline style top/height */
+  left: 2px;
+  width: calc(100% - 4px); /* Full width of column minus padding */
+  box-sizing: border-box;
+  padding: 4px 8px; /* Slightly more prominent padding */
+  font-size: 0.85em;
+  border-radius: 4px;
+  white-space: nowrap; /* Prevent title wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Add ellipsis if text overflows */
+}
+
+/* Highlight for drag and drop */
+.highlight-drop {
+  background-color: #e0f2f7;
+  border: 1px dashed #7bcbe0;
+}
+
+.current-day-column {
+    background-color: #f8f8f8; /* Slight highlight for today's column */
+}
+
+/* Responsive adjustments for weekly/daily */
+@media (max-width: 768px) {
+  .weekly-calendar,
+  .daily-calendar {
+    margin: 15px 5px;
+    min-height: auto;
+  }
+
+  .weekly-header,
+  .daily-header {
+    padding: 10px 15px;
+    font-size: 1.1em;
+  }
+
+  .weekly-days .day-header {
+    font-size: 0.75em;
+    padding: 8px 0;
+  }
+
+  .time-column {
+    width: 50px; /* Smaller time column */
+  }
+  .time-slot-label {
+      font-size: 0.7em;
+  }
+
+  .weekly-event-grid .event-item,
+  .daily-event-grid .event-item {
+    font-size: 0.7em; /* Even smaller event text */
+    padding: 2px 4px;
+  }
+}
+
+@media (max-width: 480px) {
+    .weekly-event-grid,
+    .daily-event-grid {
+        flex-direction: column; /* Stack time and day columns */
+    }
+
+    .time-column {
+        width: 100%; /* Full width for time labels */
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        display: flex; /* Make time labels horizontal */
+        overflow-x: auto; /* Scroll if many time labels */
+        white-space: nowrap;
+        height: auto; /* Allow height to adjust */
+    }
+    .time-slot-label {
+        flex-shrink: 0; /* Prevent time labels from shrinking */
+        width: 50px; /* Fixed width for each time label horizontally */
+        border-bottom: none;
+        border-right: 1px dotted #eee;
+        text-align: center;
+        padding-right: 0;
+    }
+    .time-slot-label:last-child {
+        border-right: none;
+    }
+
+    .day-columns,
+    .main-day-column {
+        width: 100%; /* Full width for day columns */
+        border-right: none;
+        min-height: 500px; /* Ensure some height for content */
+    }
+    .day-column {
+        border-bottom: 1px solid #eee; /* Separate stacked day columns */
+    }
+    .day-column:last-child {
+        border-bottom: none;
+    }
+    .time-slot {
+        display: none; /* Hide individual time slot lines in stacked view */
+    }
+    .day-events-overlay {
+        position: static; /* Allow events to flow naturally */
+        overflow-y: visible; /* No internal scroll */
+        height: auto;
+    }
+    .weekly-event-grid .event-item,
+    .daily-event-grid .event-item {
+        position: static; /* No absolute positioning in stacked view */
+        width: 100%;
+        margin-bottom: 5px; /* Space between stacked events */
+        white-space: normal; /* Allow text to wrap */
+        text-overflow: unset;
+    }
+}

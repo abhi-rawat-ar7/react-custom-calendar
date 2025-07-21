@@ -1,0 +1,104 @@
+/* src/components/Calendar.css */
+
+/* General Calendar Container */
+.calendar {
+  max-width: 900px; /* Or a suitable max-width */
+  margin: 30px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Helps with border radius */
+}
+
+/* Header Row */
+.header.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #eee;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.header .col-start,
+.header .col-end {
+  cursor: pointer;
+  padding: 5px;
+  display: flex; /* Ensures icon is centered if it has text */
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  transition: color 0.2s ease;
+}
+
+.header .col-start:hover,
+.header .col-end:hover {
+  color: #007bff;
+}
+
+.header .icon {
+  font-family: 'Material Icons'; /* Make sure Material Icons are linked in index.html */
+  font-size: 24px;
+}
+
+/* Days of the Week Row (Mon, Tue, etc.) */
+.days.row {
+  display: flex; /* Crucial for horizontal alignment */
+  border-bottom: 1px solid #eee;
+  background-color: #fcfcfc;
+}
+
+.days .col {
+  flex-grow: 1;
+  flex-basis: 0; /* Allows even distribution */
+  padding: 10px 0;
+  text-align: center;
+  font-weight: bold;
+  color: #777;
+}
+
+/* Main Calendar Body (Date Cells) */
+.body .row {
+  display: flex; /* Crucial for rows of days */
+  border-bottom: 1px solid #eee;
+}
+
+.body .row:last-child {
+  border-bottom: none;
+}
+
+.body .col.cell {
+  flex-grow: 1;
+  flex-basis: 0; /* Allows even distribution of columns */
+  border-right: 1px solid #eee;
+  min-height: 120px; /* Minimum height for cells */
+  position: relative;
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  box-sizing: border-box; /* Include padding/border in cell size */
+}
+
+.body .col.cell:last-child {
+  border-right: none;
+}
+
+.body .col.cell:hover {
+  background-color: #f0f8ff; /* Light blue on hover */
+}
+
+.body .col.cell.disabled {
+  color: #ccc;
+  background-color: #f8f8f8;
+  pointer-events: none; /* Disable clicks on days outside the current month */
+}
+
+.body .col.cell.current-day {
+  background-color: #e0f2f7; /* Highlight current day */
+  border: 1px solid #7bcbe0;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.1);
+  border-radius: 4px;
+}
+/* Ensure these styles are correctly applied. */

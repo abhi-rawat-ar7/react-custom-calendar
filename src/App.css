@@ -1,0 +1,159 @@
+/* src/App.css */
+.App {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 20px;
+}
+
+h1 {
+  color: #333;
+}
+
+/* src/App.css - Add to the end of the file */
+
+/* src/App.css - Modify search-bar-container for small screens */
+
+.search-bar-container {
+  margin-bottom: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+}
+
+/* Add this media query block */
+@media (max-width: 768px) {
+  .search-bar-container {
+    padding: 0 5px; /* Reduce padding on smaller screens */
+  }
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1.1em;
+  box-sizing: border-box;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #88ccee;
+  box-shadow: 0 0 0 3px rgba(136, 204, 238, 0.3);
+}
+
+/* src/App.css - Add to the end of the file or integrate with existing styles */
+
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 15px; /* Space between search and category filters */
+  margin-bottom: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+  align-items: flex-end; /* Align items to the bottom */
+}
+
+.search-bar-container,
+.category-filter-container {
+  flex: 1; /* Allow both to grow and take available space */
+  min-width: 250px; /* Ensure they don't get too small */
+}
+
+.category-filter-container label {
+  display: block; /* Label on its own line */
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.category-filter-select {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1.1em;
+  box-sizing: border-box;
+  background-color: white;
+  appearance: none; /* Remove default dropdown arrow */
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2C197.3L159.9%2C69.8c-3.1-3.1-8.2-3.1-11.3,0L5.4,197.3c-3.1,3.1-3.1,8.2,0,11.3l11.3,11.3c3.1,3.1,8.2,3.1,11.3,0l114.5-114.5l114.5,114.5c3.1,3.1,8.2,3.1,11.3,0l11.3-11.3C290.1,205.5,290.1,200.4,287,197.3z%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: right 10px top 50%;
+  background-size: 12px auto;
+  cursor: pointer;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-filter-select:focus {
+  outline: none;
+  border-color: #88ccee;
+  box-shadow: 0 0 0 3px rgba(136, 204, 238, 0.3);
+}
+
+/* Responsive adjustments for filter controls */
+@media (max-width: 768px) {
+  .filter-controls {
+    flex-direction: column; /* Stack filters vertically on small screens */
+    align-items: stretch; /* Stretch items to full width */
+    padding: 0 5px;
+  }
+  .search-bar-container,
+  .category-filter-container {
+    min-width: unset; /* Remove min-width to allow full flexibility */
+    width: 100%;
+  }
+}
+
+/* src/App.css - Add to the end of the file or integrate */
+
+.view-selector {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 10px;
+  gap: 10px;
+}
+
+.view-button {
+  padding: 10px 20px;
+  border: 1px solid #007bff;
+  background-color: #fff;
+  color: #007bff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  flex: 1; /* Make buttons equally wide */
+  max-width: 150px; /* Limit individual button width */
+}
+
+.view-button:hover {
+  background-color: #e7f3ff;
+}
+
+.view-button.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Responsive adjustments for view selector */
+@media (max-width: 768px) {
+  .view-selector {
+    padding: 0 5px;
+    gap: 5px;
+  }
+  .view-button {
+      font-size: 0.9em;
+      padding: 8px 15px;
+  }
+}

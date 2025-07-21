@@ -1,0 +1,8 @@
+/* src/components/DailyCalendar.css */
+@import "./WeeklyCalendar.css"; /* Import shared styles */
+
+/* Add any specific daily view overrides here if needed */
+/* For instance, if you want the daily view to be wider or have different column styles */
+.daily-event-grid {
+    max-width: 800px; /* Example: make daily view narrower */
+}
