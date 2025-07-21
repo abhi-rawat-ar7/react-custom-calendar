@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/event-calendar-frontend/static/css/main.99a5cbbc.css",
+    "main.js": "/event-calendar-frontend/static/js/main.1787e33b.js",
+    "index.html": "/event-calendar-frontend/index.html",
+    "main.99a5cbbc.css.map": "/event-calendar-frontend/static/css/main.99a5cbbc.css.map",
+    "main.1787e33b.js.map": "/event-calendar-frontend/static/js/main.1787e33b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.99a5cbbc.css",
+    "static/js/main.1787e33b.js"
+  ]
+}

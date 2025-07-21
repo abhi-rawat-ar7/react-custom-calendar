@@ -2,7 +2,7 @@
   "name": "event-calendar-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://abhi-rawat-ar7.github.io/react-custom-calendar",
+  "homepage": "https://abhi-rawat-ar7.github.io/event-calendar-frontend",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
